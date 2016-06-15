@@ -1,0 +1,12 @@
+-- input stream
+CREATE INPUT STREAM in1 SCHEMA (
+	"CLAIM_ID" string,
+	"DAYS_TO_REPORT" integer,
+	"BODILY_INJURY_AMOUNT" integer,
+	"AGE" integer,
+	"INCOME_ESTIMATE" double,
+	"INCOME_CATEGORY" integer
+);
+
+-- decision logic
+,CASE WHEN p."rr_IS_FRAUD" > 0.2817 THEN 'Yes' ELSE 'No' END AS "IS_FRAUD_DECISION"
